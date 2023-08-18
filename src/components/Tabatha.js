@@ -1,7 +1,8 @@
 import { Container, Button, Field, Flex } from "@prismane/core";
 export default function Tabatha(props) {
+  const btnsclass = 'my-5 w-[300px] text-white hover:bg-red-500';
   return (
-    <Container>
+    <Container className="text-white">
       <h1 className="text-5xl uppercase mb-[25px]">Tabatha</h1>
       <Flex className="my-[15px]">
         <h3 className="w-[150px] text-xl font-bold mr-[15px]">POR</h3>
@@ -34,27 +35,26 @@ export default function Tabatha(props) {
         <h3 className="w-[150px] ml-[15px] text-xl font-bold">SEGUNDOS</h3>
       </Flex>
 
-      <Flex>
+      <Container>
         <Button
-          className="my-5 mx-5 w-[300px]"
+          className={btnsclass}
           variant="tertiary"
-          color="red"
+          color="white"
           size="lg"
-          fillOnHover
           onClick={props.volve}
         >
           Voltar
         </Button>
         <Button
-          className="my-5 mx-5 w-[300px]"
+          className={btnsclass}
           variant="tertiary"
-          color="red"
+          color="white"
           size="lg"
-          fillOnHover
+          onClick={props.aindano}
         >
           Empezar
         </Button>
-      </Flex>
+      </Container>
     </Container>
   );
 }

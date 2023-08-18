@@ -4,6 +4,8 @@ import { Container, Button } from "@prismane/core";
 export default function Hora(props) {
   const [time, setTime] = useState(new Date());
 
+  const btnsclass = 'my-5 w-[300px] text-white hover:bg-red-500';
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(new Date());
@@ -19,21 +21,20 @@ export default function Hora(props) {
   const seconds = time.getSeconds().toString().padStart(2, "0");
 
   return (
-    <div>
-      <h1>Hora actual</h1>
-      <div className="text-4xl font-semibold">
+    <Container>
+      <h1 className="text-4xl my-5 text-white">Hora actual</h1>
+      <div className="text-4xl font-semibold text-white">
         {hours}:{minutes}:{seconds}
       </div>
       <Button
-        className="my-5 w-[300px]"
+        className={btnsclass}
         variant="tertiary"
-        color="red"
+        color="white"
         size="lg"
-        fillOnHover
         onClick={props.volve}
       >
         Voltar
       </Button>
-    </div>
+    </Container>
   );
 }
