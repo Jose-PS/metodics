@@ -18,7 +18,7 @@ export default function Emom(props) {
         <h3 className={h3rightcl}>MINUTOS</h3>
       </div>
       <div className={contclass}>
-        <h3 className={h3leftcls}>Y</h3>
+        <h3 className={h3leftcls}>E</h3>
         <Field
           variant="outlined"
           size="lg"
