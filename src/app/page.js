@@ -1,10 +1,14 @@
 "use client";
-import Amrap from "@/components/Amrap";
-import Emom from "@/components/Emom";
+import Amrap from "@/components/amrap/Amrap";
+import Amrap_timer from "@/components/amrap/Amrap_timer";
+import Emom from "@/components/emom/Emom";
+import Emom_timer from "@/components/emom/Emom_timer";
 import Hora from "@/components/Hora";
 import NonEsta from "@/components/NonEsta";
-import PorTempo from "@/components/PorTempo";
-import Tabatha from "@/components/Tabatha";
+import PorTempo from "@/components/porTempo/PorTempo";
+import PorTempo_timer from "@/components/porTempo/PorTempo_timer";
+import Tabata from "@/components/tabata/Tabata";
+import Tabata_timer from "@/components/tabata/Tabata_timer";
 import { Container, Button, PrismaneProvider } from "@prismane/core";
 import { useState } from "react";
 
@@ -14,21 +18,31 @@ export default function Home() {
   const renderActivo = () => {
     switch (activo) {
       case "Hora":
-        return <Hora volve={atras} aindano={nonesta} />;
-      case "Tabatha":
-        return <Tabatha volve={atras} aindano={nonesta} />;
+        return <Hora volve={atras} atimer={rendTimer} />;
+      case "Tabata":
+        return <Tabata volve={atras} timer={rendTimer} />;
       case "PorTempo":
-        return <PorTempo volve={atras} aindano={nonesta} />;
+        return <PorTempo volve={atras} timer={rendTimer} />;
       case "Emom":
-        return <Emom volve={atras} aindano={nonesta} />;
+        return <Emom volve={atras} timer={rendTimer} />;
       case "Amrap":
-        return <Amrap volve={atras} aindano={nonesta} />;
-      case "nonesta":
-        return <NonEsta volve={atras} />;
+        return <Amrap volve={atras} timer={rendTimer} />;
+      case "Tabata_timer":
+        return <Tabata_timer volve={atras} />;
+      case "PorTempo_timer":
+        return <PorTempo_timer volve={atras} />;
+      case "Emom_timer":
+        return <Emom_timer volve={atras} />;
+      case "Amrap_timer":
+        return <Amrap_timer volve={atras} />;
       default:
         return null;
     }
   };
+
+  const rendTimer = (timer) =>{
+    setActivo(timer);
+  }
 
   const nonesta = () => {
     setActivo("nonesta");
@@ -65,9 +79,9 @@ export default function Home() {
                 variant="tertiary"
                 color="white"
                 size="lg"
-                onClick={() => setActivo("Tabatha")}
+                onClick={() => setActivo("Tabata")}
               >
-                Tabatha
+                Tabata
               </Button>
               <Button
                 className={btnsclass}
