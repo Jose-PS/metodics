@@ -4,7 +4,7 @@ import Emom from "@/components/Emom";
 import Hora from "@/components/Hora";
 import PorTempo from "@/components/PorTempo";
 import Tabatha from "@/components/Tabatha";
-import { Container, Button } from "@prismane/core";
+import { Container, Button, PrismaneProvider } from "@prismane/core";
 import { useState } from "react";
 
 export default function Home() {
@@ -32,6 +32,7 @@ export default function Home() {
   };
 
   return (
+    <PrismaneProvider>
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Container>
         <h1 className="text-8xl font-serif">
@@ -98,5 +99,6 @@ export default function Home() {
         )}
       </Container>
     </main>
+    </PrismaneProvider>
   );
 }
