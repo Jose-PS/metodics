@@ -44,7 +44,7 @@ export default function Home() {
           <h1 className="text-6xl xl:text-8xl font-serif">
             <span className="text-red-600">M</span>etodics
           </h1>
-          <div className="w-[200px] xl:w-[300px] bg-red-500 text-center mt-[20px] rounded-lg">
+          <div className="w-[200px] xl:w-[300px] bg-red-500 text-center mt-[20px] mb-[30px] rounded-lg">
             <h3>CALISTHENIC PROGRAM</h3>
           </div>
         </Container>

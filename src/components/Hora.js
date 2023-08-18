@@ -22,8 +22,8 @@ export default function Hora(props) {
 
   return (
     <Container>
-      <h1 className="text-4xl my-5 text-white">Hora actual</h1>
-      <div className="text-4xl font-semibold text-white">
+      <h1 className="text-4xl my-5 text-white text-center uppercase">Hora actual</h1>
+      <div className="text-4xl font-semibold text-white text-center my-10">
         {hours}:{minutes}:{seconds}
       </div>
       <Button
