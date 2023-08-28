@@ -1,7 +1,6 @@
 import { Container, Button, Field } from "@prismane/core";
 import PorTempo_timer from "./PorTempo_timer";
 import { useState } from "react";
-import { render } from "react-dom";
 export default function PorTempo(props) {
   const [timer, setTimer] = useState(false);
   const [mins, setMins] = useState(0);
