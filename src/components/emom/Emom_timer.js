@@ -1,13 +1,81 @@
+import React, { useState, useEffect } from "react";
 import { Container, Button } from "@prismane/core";
 
 export default function Emom_timer(props) {
-    const btnsclass = 'my-5 w-[300px] text-white hover:bg-red-500';
+  const btnsclass = "my-5 w-[300px] text-white hover:bg-red-500";
+
+  const totalRounds = parseInt(props.rondas, 10);
+  const totalSecondsWork = isNaN(props.mins)? 0 :parseInt(props.mins,10) * 60 + parseInt(props.secs, 10);
+  const totalSecondsRest = parseInt(props.rest, 10);
+
+  const [currentRound, setCurrentRound] = useState(1);
+  const [timeLeft, setTimeLeft] = useState(totalSecondsWork);
+  const [isRest, setIsRest] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
+
+  const handlePauseClick = () => {
+    setIsPaused(!isPaused);
+  };
+
+  const handleRestartClick = () => {
+    setCurrentRound(1);
+    setTimeLeft(totalSecondsWork);
+    setIsRest(false);
+    setIsPaused(false);
+    setIsFinished(false);
+  };
+
+  useEffect(() => {
+    if (!isPaused && !isFinished) {
+      const interval = setInterval(() => {
+        if (timeLeft === 1) {
+          if (isRest) {
+            if (currentRound === totalRounds) {
+              clearInterval(interval);
+              setIsFinished(true);
+            } else {
+              setCurrentRound(currentRound + 1);
+              setIsRest(false);
+              setTimeLeft(totalSecondsWork);
+            }
+          } else {
+            setIsRest(true);
+            setTimeLeft(totalSecondsRest);
+          }
+        } else {
+          setTimeLeft(timeLeft - 1);
+        }
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [currentRound, timeLeft, isRest, isPaused, isFinished, totalSecondsWork, totalSecondsRest, totalRounds]);
+
+  const displayMinutes = Math.floor(timeLeft / 60);
+  const displaySeconds = timeLeft % 60;
+
   return (
     <Container>
-      <h1 className="text-4xl my-5 text-white text-center">Emom timer</h1>
       <div className="text-4xl font-semibold text-white text-center">
-        
+        {isFinished
+          ? "EMOM completado!!"
+          : `${isRest ? "Descanso" : "Traballo"} - ${
+              displayMinutes < 10 ? `0${displayMinutes}` : displayMinutes
+            }:${displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}`}
+        <div className="mt-2 text-lg">
+          {isFinished ? null : `${currentRound}/${totalRounds} Ronda(s)`}
+        </div>
       </div>
+      <Button
+        className={btnsclass}
+        variant="tertiary"
+        color="white"
+        size="lg"
+        onClick={isFinished ? handleRestartClick : handlePauseClick}
+      >
+        {isFinished ? "Reiniciar" : isPaused ? "Continuar" : "Pausar"}
+      </Button>
       <Button
         className={btnsclass}
         variant="tertiary"
@@ -20,3 +88,6 @@ export default function Emom_timer(props) {
     </Container>
   );
 }
+
+
+
