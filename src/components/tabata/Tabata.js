@@ -72,6 +72,15 @@ export default function Tabata(props) {
           </div>
 
           <Container>
+          <Button
+              className={btnsclass}
+              variant="tertiary"
+              color="white"
+              size="lg"
+              onClick={renderTimer}
+            >
+              Empezar
+            </Button>
             <Button
               className={btnsclass}
               variant="tertiary"
@@ -80,15 +89,6 @@ export default function Tabata(props) {
               onClick={props.volve}
             >
               Voltar
-            </Button>
-            <Button
-              className={btnsclass}
-              variant="tertiary"
-              color="white"
-              size="lg"
-              onClick={renderTimer}
-            >
-              Empezar
             </Button>
           </Container>
         </Container>
