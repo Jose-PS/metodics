@@ -1,4 +1,4 @@
-import { Container, Button, Field, Flex } from "@prismane/core";
+import { Container, Button, Field } from "@prismane/core";
 import Tabata_timer from "./Tabata_timer";
 import { useState } from "react";
 export default function Tabata(props) {

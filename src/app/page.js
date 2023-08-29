@@ -4,7 +4,6 @@ import Amrap_timer from "@/components/amrap/Amrap_timer";
 import Emom from "@/components/emom/Emom";
 import Emom_timer from "@/components/emom/Emom_timer";
 import Hora from "@/components/Hora";
-import NonEsta from "@/components/NonEsta";
 import PorTempo from "@/components/porTempo/PorTempo";
 import PorTempo_timer from "@/components/porTempo/PorTempo_timer";
 import Tabata from "@/components/tabata/Tabata";
