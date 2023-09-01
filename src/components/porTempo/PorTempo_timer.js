@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button } from "@prismane/core";
+import { longBeep, shortBeep } from "@/app/utils/sounds";
 
 export default function PorTempo_timer(props) {
   const btnsclass = "my-5 w-[300px] text-white hover:bg-red-500";
@@ -46,6 +47,7 @@ export default function PorTempo_timer(props) {
               displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds
             }`}
       </div>
+      {displayMinutes===0 && (displaySeconds===totalSeconds-3 || displaySeconds===totalSeconds-2 || displaySeconds===totalSeconds-1)? shortBeep():displayMinutes===0 && (displaySeconds===totalSeconds)?longBeep():null}
       <Button
         className={btnsclass}
         variant="tertiary"

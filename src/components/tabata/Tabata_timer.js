@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button } from "@prismane/core";
+import { longBeep, shortBeep } from "@/app/utils/sounds";
 
 export default function Tabata_timer(props) {
   const btnsclass = "my-5 w-[300px] text-white hover:bg-red-500";
@@ -26,7 +27,7 @@ export default function Tabata_timer(props) {
   useEffect(() => {
     if (!isPaused && !isFinished) {
       const interval = setInterval(() => {
-        if (timeLeft === 1) {
+        if (timeLeft === 0) {
           if (isRest) {
             if (currentRound === parseInt(props.rondas, 10)) {
               clearInterval(interval);
@@ -63,6 +64,7 @@ export default function Tabata_timer(props) {
         <div className="mt-2 text-lg">
           {isFinished ? null : `${currentRound}/${props.rondas} Ronda(s)`}
         </div>
+        {displayMinutes===0 && (displaySeconds===3 || displaySeconds===2 || displaySeconds===1)? shortBeep():displayMinutes===0 && (displaySeconds===0)?longBeep():null}
       </div>
       <Button
         className={btnsclass}

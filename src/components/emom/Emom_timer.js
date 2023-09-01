@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button } from "@prismane/core";
+import { longBeep, shortBeep } from "@/app/utils/sounds";
 
 export default function Emom_timer(props) {
   const btnsclass = "my-5 w-[300px] text-white hover:bg-red-500";
@@ -29,7 +30,7 @@ export default function Emom_timer(props) {
   useEffect(() => {
     if (!isPaused && !isFinished) {
       const interval = setInterval(() => {
-        if (timeLeft === 1) {
+        if (timeLeft === 0) {
           if (isRest) {
             if (currentRound === totalRounds) {
               clearInterval(interval);
@@ -66,6 +67,7 @@ export default function Emom_timer(props) {
         <div className="mt-2 text-lg">
           {isFinished ? null : `${currentRound}/${totalRounds} Ronda(s)`}
         </div>
+        {displayMinutes===0 && (displaySeconds===3 || displaySeconds===2 || displaySeconds===1)? shortBeep():displayMinutes===0 && (displaySeconds===0)?longBeep():null}
       </div>
       <Button
         className={btnsclass}
