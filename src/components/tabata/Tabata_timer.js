@@ -55,10 +55,10 @@ export default function Tabata_timer(props) {
 
   return (
     <Container>
-      <div className="text-4xl font-semibold text-white text-center">
+      <div className="text-4xl md:text-8xl font-semibold text-white text-center">
         {isFinished
           ? "Entreno rematado!!"
-          : `${isRest ? "Descanso" : "Traballo"} - ${
+          : `${isRest ? "Descanso" : "Traballo"} \n ${
               displayMinutes < 10 ? `0${displayMinutes}` : displayMinutes
             }:${displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}`}
         <div className="mt-2 text-lg">

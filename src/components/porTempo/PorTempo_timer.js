@@ -40,7 +40,7 @@ export default function PorTempo_timer(props) {
 
   return (
     <Container>
-      <div className="text-4xl font-semibold text-white text-center">
+      <div className="text-4xl md:text-8xl font-semibold text-white text-center">
         {isFinished
           ? "Rematou o tempo!!"
           : `${displayMinutes < 10 ? `0${displayMinutes}` : displayMinutes}:${
