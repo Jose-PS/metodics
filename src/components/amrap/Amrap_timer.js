@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button } from "@prismane/core";
+import { longBeep, shortBeep } from "@/app/utils/sounds";
 
 export default function Amrap_timer(props) {
   const btnsclass = "my-5 w-[300px] text-white hover:bg-red-500";
@@ -43,9 +44,10 @@ export default function Amrap_timer(props) {
         {isFinished
           ? "Rematou o tempo!!"
           : `${displayMinutes < 10 ? `0${displayMinutes}` : displayMinutes}:${
-              displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds
+              displaySeconds < 10 ? `0${displaySeconds}`  : displaySeconds
             }`}
       </div>
+      {displayMinutes===0 && (displaySeconds===3 || displaySeconds===2 || displaySeconds===1)? shortBeep():displayMinutes===0 && (displaySeconds===0)?longBeep():null}
       <Button
         className={btnsclass}
         variant="tertiary"
