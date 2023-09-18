@@ -58,14 +58,14 @@ export default function Emom_timer(props) {
 
   return (
     <Container>
-      <div className="text-4xl md:text-8xl font-semibold text-white text-center">
+      <div className="text-4xl md:text-[150px] md:leading-[150px] font-semibold text-white text-center">
         {isFinished
           ? "EMOM completado!!"
           : `${isRest ? "Descanso" : "Traballo"} \n ${
               displayMinutes < 10 ? `0${displayMinutes}` : displayMinutes
             }:${displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}`}
-        <div className="mt-2 text-lg">
-          {isFinished ? null : `${currentRound}/${totalRounds} Ronda(s)`}
+        <div className="mt-2 text-lg md:text-[150px] md:leading-[150px]">
+          {isFinished ? null : `Ronda ${currentRound} de ${totalRounds}`}
         </div>
         {displayMinutes===0 && (displaySeconds===3 || displaySeconds===2 || displaySeconds===1)? shortBeep():displayMinutes===0 && (displaySeconds===0)?longBeep():null}
       </div>
