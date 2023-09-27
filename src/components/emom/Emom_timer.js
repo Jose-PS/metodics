@@ -65,7 +65,7 @@ export default function Emom_timer(props) {
               displayMinutes < 10 ? `0${displayMinutes}` : displayMinutes
             }:${displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}`}
         <div className="mt-2 text-lg md:text-[150px] md:leading-[150px]">
-          {isFinished ? null : `Ronda ${currentRound} de ${totalRounds}`}
+          {isFinished ? null : `${currentRound} de ${totalRounds}`}
         </div>
         {displayMinutes===0 && (displaySeconds===3 || displaySeconds===2 || displaySeconds===1)? shortBeep():displayMinutes===0 && (displaySeconds===0)?longBeep():null}
       </div>
